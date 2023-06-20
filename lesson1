@@ -1,0 +1,118 @@
+#%% 1. Numbers
+
+int_number = 1
+float_number = 1.0
+complex_number = 1 + 2j
+round_float = round(1234.5678, 2)
+str2int = int("213")
+
+print(round_float)
+# %% list and indexing
+
+number_list = [0, 1, 1, 2, 3, 5, 8]
+# the slicings use the zero-based indexing,
+# that includes the lower bound and omit the upper bound, e.g.
+print(number_list[3])  # indexing
+print(number_list[0:7])  # [n, m] : slicing from index n to the mth position of the list
+print(number_list[-1])  # the last one
+print(number_list[-3:])  # the last three
+print(len(number_list))
+list_list = [[1, 2, 3], [4, 5, 6]]  # list of list
+print(list_list)
+print(list_list[0:2])
+# %%
+x = 4  # 指派 3 這個數值儲存至 x 這個變數
+y = 2  # 指派 2 這個數值儲存至 y 這個變數
+print( x + y)  # 計算x+y
+x / y  # 計算 x/y (以 float 計算)
+print(x // y)  # 計算 x//y (以 int 計算)
+x == y  # 判斷x是否等於y
+z1 = x / y
+z2 = x // y
+w = None
+print (type(z1) ) # find out z1 這個 object 的 type(int,float,...)
+type(z2)
+# z3 = x * w  # 錯誤會發生
+a, b = 1, 2  # 多重的變數定義
+type(z1) == int  # 判斷 z1 的 type 是否為整數
+
+
+# %%
+name = 'John'
+print('name 的字首為',name[0:1])
+# %%
+t1=()# 空的 tuple
+t2 = (1, 'two', 3)
+print(t1)
+print(t2)
+t3 = t1+t2
+print(t3)
+print(t3[0:1])
+
+# %%
+import numpy as np
+r1 = range(10)
+r2 = range(0,10,1)
+r3 = range(0,10,2)
+print(r1[0:5])
+print(r2)
+print(r3)
+#r1和r2是相同的range
+# r2 和 r3 的公差是不一樣的
+r1==r2
+r1==r3
+r4 = np.arange(0,10,0.5)
+
+# %%
+import numpy as np # 輸入 NumPy 這個 library，並以 np 作為呼叫縮寫
+data_0 = ([0.9,-0.2,-0.8],[0.5,0.2,0.9],[1,2,3])
+data = np.array(data_0) # 利用 np 裏頭的 array 
+print(data)
+
+# 來建立一個多維度陣列
+#print(data.ndim) # 利用 .dim 回傳 data 的資料總維度
+print(data[0:2].shape) # 利用 .shape 回傳 data 的資料維度
+#print(data.dtype )# 利用 .dtype 回傳 data 的資料型態
+#data*10 # 將所有 data 裡的資料都乘上 10
+# %%
+month_index = [{'Jan':1}, {'Feb':2}, {'Mar':3,'Apr':4,'May':5}]
+#1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May'}
+#print('一年的第三個月是', month_index[3])
+dist = month_index['Apr']-month_index['Jan']
+print('Apr and Jan are ', dist, 'months apart')
+# %%
+a=[{'Jan':1}, {'Feb':2}]
+a[1]
+
+# %%
+x1 = ([1,2,3],[4,5,6]) # Python 內建儲存多維資料的 tuple
+x2 = np.array([[1,2,3],[4,5,6]],dtype=np.int32)
+print(x1[0][0])
+type(x1[0][0])
+print(x2[0])
+type(x2[0,0])
+# %%
+import matplotlib.pyplot as plt 
+import numpy as np
+x = np.arange(10)
+plt.plot(x)
+plt.show()
+# %%
+fig = plt.figure() # 創建一個 figure 物件, 試試看 type(fig) 
+ax1 = fig.add_subplot(2,2,1) # 在 fig 這個物件下增加子圖物件
+# 並設定子圖的擺設與數目 (2 x 2 矩陣) 
+ax1.plot(np.random.randn(30).cumsum(),'k--')
+import os
+fig2 = plt.figure()
+ax1 = fig2.add_subplot(2,2,1)
+ax2 = fig2.add_subplot(2,2,2)
+ax3 = fig2.add_subplot(2,2,3)
+ax1.plot(np.random.randn(30).cumsum(),'k--')
+ax1.plot(np.random.randn(30).cumsum(),'b--')
+ax1.plot(np.random.randn(30).cumsum(),'r--') # 三條不一樣的摺線
+ax2.hist(np.random.randn(1000),bins=15,color='red')
+# 直方圖, bins: 切多少區塊, 詳細設定可以看 ?plt.hist
+ax3.scatter(np.arange(30),np.arange(30)+3*np.random.randn(30))
+# 散佈圖
+#file_path=os.getcwd()
+#plt.savefig(file_path+'/fig2.png')
